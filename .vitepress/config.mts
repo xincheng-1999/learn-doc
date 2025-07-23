@@ -117,6 +117,7 @@ function generateNav(): NavItem[] {
 export default defineConfig({
   title: "My Awesome Project",
   description: "A VitePress Site",
+  base: '/learn-doc/', // GitHub Pages 部署路径
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: generateNav(),
