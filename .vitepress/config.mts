@@ -115,8 +115,8 @@ function generateNav(): NavItem[] {
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "My Awesome Project",
-  description: "A VitePress Site",
+  title: "学习文档中心",
+  description: "系统化的技术文档，助力你的学习之路",
   base: '/learn-doc/', // GitHub Pages 部署路径
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config

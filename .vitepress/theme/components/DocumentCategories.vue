@@ -3,7 +3,7 @@
     <h2 class="categories-title">📚 文档分类</h2>
     <div class="categories-grid">
       <a 
-        href="/docs/backend/express-framework"
+        :href="withBase('/docs/backend/express-framework')"
         class="category-card"
       >
         <div class="category-icon">⚙️</div>
@@ -13,7 +13,7 @@
       </a>
       
       <a 
-        href="/docs/database/design-principles"
+        :href="withBase('/docs/database/design-principles')"
         class="category-card"
       >
         <div class="category-icon">🗄️</div>
@@ -23,7 +23,7 @@
       </a>
       
       <a 
-        href="/docs/devops/ci-cd-practices"
+        :href="withBase('/docs/devops/ci-cd-practices')"
         class="category-card"
       >
         <div class="category-icon">🚀</div>
@@ -33,7 +33,7 @@
       </a>
       
       <a 
-        href="/docs/frontend/api-examples"
+        :href="withBase('/docs/frontend/api-examples')"
         class="category-card"
       >
         <div class="category-icon">🎨</div>
@@ -44,6 +44,10 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import { withBase } from 'vitepress'
+</script>
 
 <style scoped>
 .document-categories {
