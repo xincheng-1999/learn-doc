@@ -23,5 +23,3 @@ Thumbs.db
 # Env files
 .env*
 
-# Others
-pnpm-lock.yaml
