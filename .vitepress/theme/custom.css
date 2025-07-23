@@ -1,0 +1,15 @@
+/* 自定义样式 */
+.VPHome .VPHomeFeatures {
+  padding-top: 0;
+}
+
+.VPHome .VPHomeHero {
+  padding-bottom: 2rem;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .VPHome .VPHomeHero {
+    padding-bottom: 1rem;
+  }
+}

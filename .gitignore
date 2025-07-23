@@ -1,0 +1,27 @@
+node_modules
+
+# VitePress cache
+.vitepress/cache/
+
+# VitePress build output
+.vitepress/dist/
+
+# VitePress generated data
+.vitepress/data/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Env files
+.env*
+
+# Others
+pnpm-lock.yaml
