@@ -1,4 +1,4 @@
-import { readdirSync, statSync, writeFileSync } from 'fs'
+import { readdirSync, statSync, writeFileSync, mkdirSync } from 'fs'
 import { join, basename, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
@@ -44,9 +44,7 @@ function generateCategoriesData() {
     statSync(dataDir)
   } catch {
     // 目录不存在，创建它
-    import('fs').then(fs => {
-      fs.mkdirSync(dataDir, { recursive: true })
-    })
+    mkdirSync(dataDir, { recursive: true })
   }
   
   writeFileSync(join(__dirname, '../data/categories.js'), content)
