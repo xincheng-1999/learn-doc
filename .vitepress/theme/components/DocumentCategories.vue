@@ -21,7 +21,7 @@
 
 import { withBase } from 'vitepress'
 // @ts-ignore
-import { categories } from '../../scripts/data/categories.js'
+import { categories } from '../../data/categories.js'
 
 // 分类图标，可自行扩展
 const icons = {
