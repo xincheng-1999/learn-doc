@@ -45,8 +45,16 @@ jobs:
         uses: actions/configure-pages@v4
       - name: Install dependencies
         run: pnpm install # 或 pnpm install / yarn install / bun install
+      - name: Clean previous build
+        run: rm -rf .vitepress/dist .vitepress/data
       - name: Build with VitePress
         run: pnpm run docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
+      - name: List build artifacts
+        run: |
+          echo "Build completed. Listing artifacts:"
+          ls -la .vitepress/dist/
+          echo "Checking if index.html exists:"
+          test -f .vitepress/dist/index.html && echo "✓ index.html found" || echo "✗ index.html missing"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

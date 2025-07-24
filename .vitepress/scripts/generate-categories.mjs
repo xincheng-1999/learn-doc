@@ -9,17 +9,28 @@ function generateCategoriesData() {
   const docsPath = join(__dirname, '../../docs')
   const categories = []
   
+  console.log('Generating categories data...')
+  console.log('Docs path:', docsPath)
+  
   try {
+    if (!statSync(docsPath).isDirectory()) {
+      throw new Error(`Docs directory not found: ${docsPath}`)
+    }
+    
     const dirs = readdirSync(docsPath).filter(item => {
       const itemPath = join(docsPath, item)
       return statSync(itemPath).isDirectory()
     }).sort()
+    
+    console.log('Found directories:', dirs)
     
     dirs.forEach(dir => {
       const dirPath = join(docsPath, dir)
       const files = readdirSync(dirPath)
         .filter(file => file.endsWith('.md'))
         .sort()
+      
+      console.log(`Directory ${dir} contains ${files.length} markdown files:`, files)
       
       if (files.length > 0) {
         const firstFile = basename(files[0], '.md')
@@ -32,7 +43,8 @@ function generateCategoriesData() {
       }
     })
   } catch (error) {
-    console.warn('Error generating categories data:', error)
+    console.error('Error generating categories data:', error)
+    process.exit(1)
   }
   
   // 生成 JavaScript 模块
@@ -45,10 +57,13 @@ function generateCategoriesData() {
   } catch {
     // 目录不存在，创建它
     mkdirSync(dataDir, { recursive: true })
+    console.log('Created data directory:', dataDir)
   }
   
-  writeFileSync(join(__dirname, '../data/categories.js'), content)
-  console.log('Categories data generated successfully!')
+  const outputPath = join(__dirname, '../data/categories.js')
+  writeFileSync(outputPath, content)
+  console.log('Categories data generated successfully at:', outputPath)
+  console.log('Generated categories:', categories)
 }
 
 generateCategoriesData()
