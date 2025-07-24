@@ -2,51 +2,48 @@
   <div class="document-categories">
     <h2 class="categories-title">📚 文档分类</h2>
     <div class="categories-grid">
-      <a 
-        :href="withBase('/docs/backend/express-framework')"
+      <a
+        v-for="cat in categories"
+        :key="cat.name"
+        :href="withBase(`/docs/${cat.name}/${cat.firstFile}`)"
         class="category-card"
       >
-        <div class="category-icon">⚙️</div>
-        <h3 class="category-title">Backend</h3>
-        <p class="category-description">后端开发技术，服务端架构和API设计</p>
-        <div class="category-count">2 篇文档</div>
-      </a>
-      
-      <a 
-        :href="withBase('/docs/database/design-principles')"
-        class="category-card"
-      >
-        <div class="category-icon">🗄️</div>
-        <h3 class="category-title">Database</h3>
-        <p class="category-description">数据库设计、优化和管理相关知识</p>
-        <div class="category-count">2 篇文档</div>
-      </a>
-      
-      <a 
-        :href="withBase('/docs/devops/ci-cd-practices')"
-        class="category-card"
-      >
-        <div class="category-icon">🚀</div>
-        <h3 class="category-title">DevOps</h3>
-        <p class="category-description">DevOps实践、CI/CD和部署自动化</p>
-        <div class="category-count">2 篇文档</div>
-      </a>
-      
-      <a 
-        :href="withBase('/docs/frontend/api-examples')"
-        class="category-card"
-      >
-        <div class="category-icon">🎨</div>
-        <h3 class="category-title">Frontend</h3>
-        <p class="category-description">前端开发技术，包括框架、工具和最佳实践</p>
-        <div class="category-count">3 篇文档</div>
+        <div class="category-icon">{{ icons[cat.name] || '�' }}</div>
+        <h3 class="category-title">{{ formatTitle(cat.name) }}</h3>
+        <p class="category-description">{{ descriptions[cat.name] || '暂无描述' }}</p>
+        <div class="category-count">{{ cat.fileCount }} 篇文档</div>
       </a>
     </div>
   </div>
 </template>
 
 <script setup>
+
 import { withBase } from 'vitepress'
+// @ts-ignore
+import { categories } from '../../scripts/data/categories.js'
+
+// 分类图标，可自行扩展
+const icons = {
+  backend: '⚙️',
+  database: '🗄️',
+  devops: '🚀',
+  frontend: '🎨',
+  llm: '🤖'
+}
+
+// 分类描述，可自行扩展
+const descriptions = {
+  backend: '后端开发技术，服务端架构和API设计',
+  database: '数据库设计、优化和管理相关知识',
+  devops: 'DevOps实践、CI/CD和部署自动化',
+  frontend: '前端开发技术，包括框架、工具和最佳实践',
+  llm: '大模型相关文档与应用'
+}
+
+function formatTitle(name) {
+  return name.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+}
 </script>
 
 <style scoped>
