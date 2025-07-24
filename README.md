@@ -13,6 +13,7 @@ docs/
 ├── frontend/     # 前端相关文档
 ├── backend/      # 后端相关文档
 ├── devops/       # DevOps相关文档
+├── llm/          # llm相关文档
 └── new-category/ # 你的新分类
 ```
 
