@@ -118,6 +118,7 @@ export default defineConfig({
   title: "学习文档中心",
   description: "系统化的技术文档，助力你的学习之路",
   base: '/learn-doc/', // GitHub Pages 部署路径
+  lang: 'zh-CN',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: generateNav(),
